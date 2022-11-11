@@ -1,0 +1,55 @@
+{{define "title"}}Add a New Quote{{end}}
+{{define "main"}}
+<section class="py-5 mt-5">
+    <section class="position-relative py-4 py-xl-5">
+        <div class="container position-relative">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2><span style="color: rgb(255, 255, 255);">Add a quote</span><br></h2>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div>
+
+                        <form class="p-3 p-xl-4" action='/quote/create' method='POST'>
+                            <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+                            <div class="d-flex align-items-center p-3">
+                                <div
+                                        class="bs-icon-md bs-icon-circle bs-icon-primary-light d-flex flex-shrink-0 justify-content-center align-items-center d-inline-block bs-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                         viewBox="0 0 16 16" class="bi bi-exclamation-lg text-warning">
+                                        <path
+                                                d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z">
+                                        </path>
+                                    </svg></div>
+                                <div class="px-2">
+                                    <h6 class="text-warning mb-0">Pay attention!</h6>
+                                    <p class="mb-0">Don't forget to write the author of the quote.</p>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                {{with .Flash}}
+                                    <div class="alert alert-info" role="alert"><span><strong>{{.}}</strong></span></div>
+                                {{end}}
+                                {{with .Form.FieldErrors.author}}
+                                    <div class="alert alert-danger" role="alert"><span><strong>{{.}}</strong></span></div>
+                                {{end}}
+                                <input class="form-control" type="text" id="name-1" name="author"
+                                                     placeholder="Author" value='{{.Form.Author}}'>
+                            </div>
+                            <div class="mb-3">
+                                {{with .Form.FieldErrors.content}}
+                                    <div class="alert alert-danger" role="alert"><span><strong>{{.}}</strong></span></div>
+                                {{end}}
+                                <textarea class="form-control" name="content" rows="6" placeholder="Quote">{{.Form.Content}}</textarea>
+                            </div>
+                            <div><button class="btn btn-primary d-block w-100" type="submit">Add a quote</button></div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+{{end}}

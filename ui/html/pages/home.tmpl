@@ -1,0 +1,43 @@
+{{define "title"}}Home{{end}}
+{{define "main"}}
+<section class="py-5 mt-5">
+    <div class="container py-5">
+        {{if .Quotes}}
+        <h2 class="fw-lighter text-center" style="margin-top: -54px;">All quotes:</h2>
+        {{with .Flash}}
+            <div class="alert alert-info" role="alert"><span><strong>{{.}}</strong></span></div>
+        {{end}}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">
+            {{range .Quotes}}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body bg-dark border rounded border-dark">
+                        <h4 class="card-title">{{.Author}}</h4>
+                        <h6 class="text-muted card-subtitle mb-2">Quote #{{.ID}}</h6>
+                        <p class="card-text">{{.Content}}</p><a class="card-link" href='/quote/view/{{.ID}}'>Open in new window</a>
+                    </div>
+                </div>
+            </div>
+            {{end}}
+        </div>
+        {{else}}
+        <h3 class="fw-lighter text-center" style="margin-top: -54px;">There's nothing to see here... yet!</h3>
+        {{end}}
+    </div>
+</section>
+{{end}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
