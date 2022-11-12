@@ -16,6 +16,9 @@ func (app *application) routes() http.Handler {
 	fileServer := http.FileServer(http.Dir("./ui/static/"))
 	router.Handler(http.MethodGet, "/static/*filepath", http.StripPrefix("/static", fileServer))
 
+	//fs := http.FileServer(http.Dir("./ui/static/"))
+	//http.Handle("/static/*filepath", http.StripPrefix("/static", fs))
+
 	dynamic := alice.New(app.sessionManager.LoadAndSave, noSurf)
 
 	router.Handler(http.MethodGet, "/", dynamic.ThenFunc(app.home))

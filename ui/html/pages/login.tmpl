@@ -22,7 +22,7 @@
                                 <form class="text-center" action='/user/login' method='POST' novalidate>
                                     <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
                                     {{with .Flash}}
-                                        <div class="alert alert-info" role="alert"><span><strong>{{.}}</strong></span></div>
+                                        <div class="alert alert-primary" role="alert"><span><strong>{{.}}</strong></span></div>
                                     {{end}}
                                     {{range .Form.NonFieldErrors}}
                                         <div class="alert alert-danger" role="alert"><span><strong>{{.}}</strong></span></div> <!-- error -->
